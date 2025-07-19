@@ -1,23 +1,9 @@
-import hashlib
 import json
 from system_info.collector import collect_system_info
 from api.sender import send_to_api
 from monitor.state_manager import load_previous_state, save_current_state
 from constants import DEFAULT_UNKNOWN
-
-def normalize_for_hashing(data):
-    volatile_keys = [
-        "availableRam",        # naturally changes
-        "ipAddress",           # DHCP / VPN
-        "installedSoftware",   # Software changes are ignored
-        # TODO
-        # might add this to constants.py
-    ]
-    return {k: v for k, v in data.items() if k not in volatile_keys}
-
-def hash_data(data):
-    normalized = normalize_for_hashing(data)
-    return hashlib.sha256(json.dumps(normalized, sort_keys=True).encode()).hexdigest()
+from .hash import hash_data
 
 def print_diff(old, new):
     print("####"*20)
