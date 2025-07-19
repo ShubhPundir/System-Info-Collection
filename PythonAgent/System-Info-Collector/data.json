@@ -1,0 +1,285 @@
+{
+  "companyCode": "main",
+  "deviceName": "SHUBH-LAPTOP",
+  "assetType": "LAPTOP",
+  "uuid": "9DF0AE03-7E94-ED11-8C91-7C5758D7D5B3",
+  "macAddress": "7C-57-58-D7-D5-B3",
+  "processor": "AMD Ryzen 5 5500U with Radeon Graphics 4.20 GHz",
+  "os": "Windows 10 (Build 10.0.26100)",
+  "ram": "14278 MB",
+  "availableRam": "4251 MB",
+  "hddTotal": "0 GB",
+  "ssdTotal": "512 GB",
+  "serialNumber": "CND3030HJL",
+  "manufacturer": "HP",
+  "model": "HP 255 G8 Notebook PC",
+  "graphicsCard": "AMD Radeon(TM) Graphics",
+  "graphicsCardVRam": "2048 MB",
+  "antiVirus": "Windows Defender",
+  "ipAddress": "192.168.13.40",
+  "installedSoftware": [
+    {
+      "name": "Adobe Genuine Service",
+      "version": "9.0.0.29",
+      "publisher": "Adobe Inc."
+    },
+    {
+      "name": "DroidCam Client",
+      "version": "6.5.3",
+      "publisher": "DEV47APPS"
+    },
+    {
+      "name": "EShare 7.6.523",
+      "version": "7.6.523",
+      "publisher": "EShare"
+    },
+    {
+      "name": "EShare Audio 1.0.1",
+      "version": "1.0.1",
+      "publisher": "EShare"
+    },
+    {
+      "name": "EShare Camera 1.0.1",
+      "version": "1.0.1",
+      "publisher": "EShare"
+    },
+    {
+      "name": "EShare Virtual Monitor Assistant4 4.0.0.20211211",
+      "version": "4.0.0.20211211",
+      "publisher": "EShare"
+    },
+    {
+      "name": "ESystemRemoteService 1.1",
+      "version": "1.1",
+      "publisher": "EShare"
+    },
+    {
+      "name": "Google Chrome",
+      "version": "138.0.7204.158",
+      "publisher": "Google LLC"
+    },
+    {
+      "name": "IntelliJ IDEA Community Edition 2025.1.2",
+      "version": "251.26094.121",
+      "publisher": "JetBrains s.r.o."
+    },
+    {
+      "name": "Nmap 7.94",
+      "version": "7.94",
+      "publisher": "Nmap Project"
+    },
+    {
+      "name": "Npcap",
+      "version": "1.78",
+      "publisher": "Nmap Project"
+    },
+    {
+      "name": "pgJDBC 42.7.2",
+      "version": "42.7.2-1",
+      "publisher": "EnterpriseDB"
+    },
+    {
+      "name": "Pokemon BD+SP",
+      "version": null,
+      "publisher": null
+    },
+    {
+      "name": "Pokemon Uranium",
+      "version": "1.2.4",
+      "publisher": "Pokemon Uranium Team"
+    },
+    {
+      "name": "Steam",
+      "version": "2.10.91.91",
+      "publisher": "Valve Corporation"
+    },
+    {
+      "name": "Tesseract-OCR - open source OCR engine",
+      "version": "3.02.02",
+      "publisher": "Tesseract-OCR community"
+    },
+    {
+      "name": "VLC media player",
+      "version": "3.0.18",
+      "publisher": "VideoLAN"
+    },
+    {
+      "name": "Wireshark 4.2.3 x64",
+      "version": "4.2.3",
+      "publisher": "The Wireshark developer community, https://www.wireshark.org"
+    },
+    {
+      "name": "Node.js",
+      "version": "20.12.2",
+      "publisher": "Node.js Foundation"
+    },
+    {
+      "name": "Figma (Machine)",
+      "version": "125.5.6",
+      "publisher": "Figma Inc."
+    },
+    {
+      "name": "Java 8 Update 202",
+      "version": "8.0.2020.8",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "Java SE Development Kit 8 Update 202",
+      "version": "8.0.2020.8",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "MySQL Connector J",
+      "version": "8.0.33",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "MySQL Connector/NET 9.3.0",
+      "version": "9.3.0",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "MySQL Installer - Community",
+      "version": "1.6.9.0",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "Tableau 2024.2 (20242.24.0711.1636)",
+      "version": "24.2.801",
+      "publisher": "Tableau Software"
+    },
+    {
+      "name": "Cisco Packet Tracer 8.2.1 64Bit",
+      "version": "8.2.1.118",
+      "publisher": "Cisco Systems, Inc."
+    },
+    {
+      "name": "Git",
+      "version": "2.45.1",
+      "publisher": "The Git Development Community"
+    },
+    {
+      "name": "Language Pack 4.6",
+      "version": "4.6-1",
+      "publisher": "EnterpriseDB"
+    },
+    {
+      "name": "PgBouncer 1.24.1",
+      "version": "1.24.1-1",
+      "publisher": "EnterpriseDB"
+    },
+    {
+      "name": "PostGIS Bundle 3.5.3 for PostgreSQL x64 17 (remove only)",
+      "version": null,
+      "publisher": null
+    },
+    {
+      "name": "PostgreSQL 17 ",
+      "version": "17.5-1",
+      "publisher": "PostgreSQL Global Development Group"
+    },
+    {
+      "name": "INSIDE",
+      "version": null,
+      "publisher": "Playdead"
+    },
+    {
+      "name": "LIMBO",
+      "version": null,
+      "publisher": "Playdead"
+    },
+    {
+      "name": "WinRAR 7.01 (64-bit)",
+      "version": "7.01.0",
+      "publisher": "win.rar GmbH"
+    },
+    {
+      "name": "Java(TM) SE Development Kit 11.0.27 (64-bit)",
+      "version": "11.0.27.0",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "GitHub CLI",
+      "version": "2.51.0",
+      "publisher": "GitHub, Inc."
+    },
+    {
+      "name": "MySQL Workbench 8.0 CE",
+      "version": "8.0.36",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "VNC Viewer 6.17.1113",
+      "version": "6.17.1113.31799",
+      "publisher": "RealVNC Ltd"
+    },
+    {
+      "name": "Git LFS version 3.5.1",
+      "version": "3.5.1",
+      "publisher": "GitHub, Inc."
+    },
+    {
+      "name": "Zoom Workplace (64-bit)",
+      "version": "6.5.7509",
+      "publisher": "Zoom"
+    },
+    {
+      "name": "Oh My Posh",
+      "version": "25.18.0",
+      "publisher": "Jan De Dobbeleer"
+    },
+    {
+      "name": "MySQL Connector/ODBC 9.3 (64-bit)",
+      "version": "9.3.0",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "Oracle VM VirtualBox 7.0.12",
+      "version": "7.0.12",
+      "publisher": "Oracle and/or its affiliates"
+    },
+    {
+      "name": "MySQL Server 8.0",
+      "version": "8.0.36",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "Java(TM) SE Development Kit 22.0.2 (64-bit)",
+      "version": "22.0.2.0",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "Adobe Acrobat (64-bit)",
+      "version": "25.001.20577",
+      "publisher": "Adobe"
+    },
+    {
+      "name": "Asian Language And Spelling Dictionaries Support For Adobe Acrobat Reader",
+      "version": "23.008.20421",
+      "publisher": "Adobe Systems Incorporated"
+    },
+    {
+      "name": "Java(TM) SE Development Kit 20.0.2 (64-bit)",
+      "version": "20.0.2.0",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "Java(TM) SE Development Kit 17.0.12 (64-bit)",
+      "version": "17.0.12.0",
+      "publisher": "Oracle Corporation"
+    },
+    {
+      "name": "MongoDB 7.0.8 2008R2Plus SSL (64 bit)",
+      "version": "7.0.8",
+      "publisher": "MongoDB Inc."
+    }
+  ],
+  "bios": [
+    {
+      "smbiosBiosVersion": "F.32",
+      "manufacturer": "Insyde",
+      "version": "HPQOEM - 2",
+      "releaseDate": "20220802000000.000000+000"
+    }
+  ]
+}

@@ -1,11 +1,15 @@
 from system_info.collector import collect_system_info
-from monitor.watcher import start_watching
+from monitor.periodic_watcher import start_watching
+from monitor.startup_checker import run_startup_check
 from constants import STATE_FILE
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 1 and sys.argv[1] == "--watch":
-        start_watching()
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "--watch":
+            start_watching()
+        elif sys.argv[1] == '--startup':
+            run_startup_check() 
     else:
         import json
         print("INITIATING THE COLLECTION OF SYS_INFO")

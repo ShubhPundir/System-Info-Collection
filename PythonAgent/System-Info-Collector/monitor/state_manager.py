@@ -4,6 +4,7 @@ from constants import STATE_FILE
 
 def load_previous_state():
     if os.path.exists(STATE_FILE):
+        print(f'{STATE_FILE} found')
         with open(STATE_FILE, 'r') as f:
             return json.load(f)
     return {}
