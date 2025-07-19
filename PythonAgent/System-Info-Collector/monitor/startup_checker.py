@@ -5,9 +5,27 @@ from api.sender import send_to_api
 from monitor.state_manager import load_previous_state, save_current_state
 from constants import DEFAULT_UNKNOWN
 
+def normalize_for_hashing(data):
+    volatile_keys = [
+        "availableRam",        # naturally changes
+        "ipAddress",           # DHCP / VPN
+        "installedSoftware",   # Software changes are ignored
+        # TODO
+        # might add this to constants.py
+    ]
+    return {k: v for k, v in data.items() if k not in volatile_keys}
+
 def hash_data(data):
-    """Generate SHA-256 hash of the config dict for comparison"""
-    return hashlib.sha256(json.dumps(data, sort_keys=True).encode()).hexdigest()
+    normalized = normalize_for_hashing(data)
+    return hashlib.sha256(json.dumps(normalized, sort_keys=True).encode()).hexdigest()
+
+def print_diff(old, new):
+    print("####"*20)
+    print("PRINTING THE DIFFERENCE IN CONFIGURATION")
+    print("####"*20)
+    for k in new:
+        if old.get(k) != new[k]:
+            print(f"- {k}: {old.get(k)} → {new[k]}")
 
 def run_startup_check():
     print("Running startup configuration check...")
@@ -18,8 +36,8 @@ def run_startup_check():
     current_hash = hash_data(current_info)
 
     if current_hash != last_hash:
-        print(f'{current_hash} != {last_hash}')
         print("Change detected in system configuration. Sending update...")
+        print_diff(last_state, current_info)
         # send_to_api(current_info)
         save_current_state(current_info)
     else:
