@@ -1,5 +1,5 @@
 {
-  "companyCode": "main",
+  "companyCode": "main_gui",
   "deviceName": "SHUBH-LAPTOP",
   "assetType": "LAPTOP",
   "uuid": "9DF0AE03-7E94-ED11-8C91-7C5758D7D5B3",
@@ -7,7 +7,7 @@
   "processor": "AMD Ryzen 5 5500U with Radeon Graphics 4.20 GHz",
   "os": "Windows 10 (Build 10.0.26100)",
   "ram": "14278 MB",
-  "availableRam": "4371 MB",
+  "availableRam": "3640 MB",
   "hddTotal": "0 GB",
   "ssdTotal": "512 GB",
   "serialNumber": "CND3030HJL",
