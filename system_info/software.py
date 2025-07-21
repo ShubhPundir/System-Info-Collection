@@ -12,6 +12,7 @@ def get_installed_software(third_party_only=True):
             "powershell", "-Command",
             f"Get-ItemProperty HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*, "
             f"HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | {filter_condition} | "
+            f"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | {filter_condition} | "
             "Select DisplayName, DisplayVersion, Publisher | ConvertTo-Json -Compress"
         ]
         result = subprocess.run(cmd, capture_output=True, text=True)
