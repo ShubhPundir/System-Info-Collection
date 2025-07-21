@@ -4,9 +4,9 @@ def normalize_for_hashing(data):
     volatile_keys = [
         "availableRam",        # naturally changes
         "ipAddress",           # DHCP / VPN
-        "installedSoftware",   # Software changes are ignored
+        # "installedSoftware",   # Software changes are ignored
         # TODO
-        # might add this to constants.py
+        # 1. Add this to constants.py
     ]
     return {k: v for k, v in data.items() if k not in volatile_keys}
 

@@ -26,7 +26,7 @@ def collect_system_info():
         "processor": get_processor_info(),
         "os": get_os_info(),
         "ram": ram_total,
-        "availableRam": ram_free,
+        # "availableRam": ram_free,
         "hddTotal": hdd,
         "ssdTotal": ssd,
         "serialNumber": serial_number,

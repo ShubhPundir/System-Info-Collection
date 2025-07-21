@@ -59,10 +59,15 @@ def watch_single_registry_key(root, path):
                 details = read_subkey_details(root, path, new_subkey)
                 if details and details["name"]:
                     print("[Detected Install]", details)
-                    send_to_api({
-                        **details,
-                        "event": "installed"
-                    })
+                    # send_to_api({
+                    #     **details,
+                    #     "event": "installed"
+                    # })
+                    # TODO
+                    # 1. Add local ledger/json update script
+                    # 2. Refactor sent_to_api
+                    # 3. Add functionality to factor uninstall changes as well
+
 
 def start_real_time_install_monitor():
     for root, path in watch_keys:

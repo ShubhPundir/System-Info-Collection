@@ -6,6 +6,8 @@ from constants import STATE_FILE
 
 def main():
     import sys
+    import datetime
+    print(f"[MAIN START] {datetime.datetime.now()}\n")
     if len(sys.argv) > 1:
         if sys.argv[1] == '--once':
             import json
@@ -17,7 +19,7 @@ def main():
     else:
         run_startup_check()
         start_real_time_install_monitor()
-        print("[Client Running] to stop Press the off button of your PC :)")
+        print(f"[Client Running] to stop Press the off button of your PC. {datetime.datetime.now()}\n")
         while True:
             pass
 

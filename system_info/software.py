@@ -12,9 +12,11 @@ def get_installed_software(third_party_only=True):
             "powershell", "-Command",
             f"Get-ItemProperty HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*, "
             f"HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | {filter_condition} | "
-            f"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | {filter_condition} | "
+            # f"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | {filter_condition} | "
             "Select DisplayName, DisplayVersion, Publisher | ConvertTo-Json -Compress"
         ]
+        # TODO
+        # 1. Find out about HKCU vs HKLM command effect of the above
         result = subprocess.run(cmd, capture_output=True, text=True)
         data = json.loads(result.stdout)
         if isinstance(data, dict):
