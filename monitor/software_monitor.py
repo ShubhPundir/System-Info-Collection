@@ -3,6 +3,7 @@ import win32con, win32api, win32event
 import winreg
 import threading
 import time
+from constants import DEFAULT_UNKNOWN
 from api.sender import send_to_api
 
 REG_NOTIFY_CHANGE_NAME = 0x00000001
@@ -12,16 +13,31 @@ watch_keys = [
     (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall")
 ]
 
+def get_current_subkeys(root, path):
+    subkeys = set()
+    try:
+        with winreg.OpenKey(root, path) as key:
+            i = 0
+            while True:
+                try:
+                    subkey = winreg.EnumKey(key, i)
+                    subkeys.add(subkey)
+                    i += 1
+                except OSError:
+                    break # Means we have reached the end of the list of registry subkeys
+    except FileNotFoundError:
+        print("Registry path does not exist")
+    return subkeys
+
 def read_subkey_details(root, path, subkey_name):
     try:
         with winreg.OpenKey(root, f"{path}\\{subkey_name}") as key:
             name = winreg.QueryValueEx(key, "DisplayName")[0]
-            version = winreg.QueryValueEx(key, "DisplayVersion")[0] if "DisplayVersion" in [winreg.EnumValue(key, i)[0] for i in range(winreg.QueryInfoKey(key)[1])] else None
-            publisher = winreg.QueryValueEx(key, "Publisher")[0] if "Publisher" in [winreg.EnumValue(key, i)[0] for i in range(winreg.QueryInfoKey(key)[1])] else None
+            values = {winreg.EnumValue(key, i)[0]: winreg.EnumValue(key, i)[1] for i in range(winreg.QueryInfoKey(key)[1])}
             return {
                 "name": name,
-                "version": version or "UNKNOWN",
-                "publisher": publisher or "UNKNOWN",
+                "version": values.get("DisplayVersion", "UNKNOWN"),
+                "publisher": values.get("Publisher", "UNKNOWN"),
                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
             }
     except Exception:
@@ -29,44 +45,28 @@ def read_subkey_details(root, path, subkey_name):
 
 def watch_single_registry_key(root, path):
     with winreg.OpenKey(root, path, 0, winreg.KEY_READ | winreg.KEY_NOTIFY) as key:
-        subkeys_before = set()
-        try:
-            i = 0
-            while True:
-                subkey = winreg.EnumKey(key, i)
-                subkeys_before.add(subkey)
-                i += 1
-        except OSError:
-            pass
+        previous_subkeys = get_current_subkeys(root, path)
 
         while True:
             win32api.RegNotifyChangeKeyValue(key, True, REG_NOTIFY_CHANGE_NAME, None, False)
-            time.sleep(1)  # Let registry settle
-            subkeys_after = set()
-            try:
-                i = 0
-                while True:
-                    subkey = winreg.EnumKey(key, i)
-                    subkeys_after.add(subkey)
-                    i += 1
-            except OSError:
-                pass
+            time.sleep(1)  # Debounce to avoid race conditions
+            current_subkeys = get_current_subkeys(root, path)
 
-            new_keys = subkeys_after - subkeys_before
-            subkeys_before = subkeys_after
-
-            for new_subkey in new_keys:
-                details = read_subkey_details(root, path, new_subkey)
+            # Detect installs
+            new_keys = current_subkeys - previous_subkeys
+            for subkey in new_keys:
+                details = read_subkey_details(root, path, subkey)
                 if details and details["name"]:
                     print("[Detected Install]", details)
-                    # send_to_api({
-                    #     **details,
-                    #     "event": "installed"
-                    # })
-                    # TODO
-                    # 1. Add local ledger/json update script
-                    # 2. Refactor sent_to_api
-                    # 3. Add functionality to factor uninstall changes as well
+                    # send_to_api({**details, "event": "installed"})
+
+            # Detect uninstalls
+            removed_keys = previous_subkeys - current_subkeys
+            for subkey in removed_keys:
+                print(f"[Detected Uninstall] {subkey}")
+                # send_to_api({"name": subkey, "event": "uninstalled", "timestamp": time.strftime('%Y-%m-%d %H:%M:%S')})
+
+            previous_subkeys = current_subkeys
 
 
 def start_real_time_install_monitor():

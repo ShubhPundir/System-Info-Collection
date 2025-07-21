@@ -16,12 +16,17 @@ def main():
             with open(STATE_FILE, 'w') as f:
                 json.dump(info, f, indent=2)
             print(info)
+            return
     else:
         run_startup_check()
         start_real_time_install_monitor()
         print(f"[Client Running] to stop Press the off button of your PC. {datetime.datetime.now()}\n")
-        while True:
-            pass
+        
+        try:
+            while True:
+                pass
+        except KeyboardInterrupt:
+            print("\nShutting down via Keyboard Interrupt")
 
 
 if __name__ == "__main__":
