@@ -11,7 +11,7 @@ You can install `uv` via:
 
 1.  using pip
     ```bash
-        pip install uv
+    pip install uv
     ```    
 
 2. using curl
